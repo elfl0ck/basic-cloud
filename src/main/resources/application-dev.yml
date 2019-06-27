@@ -1,0 +1,19 @@
+logging:
+  file: /tsf-demo-logs/${spring.application.name}/root.log
+  level:
+    root: INFO
+
+spring:
+  application:
+    name: basic-project-dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://mdb.sit.ptcloud.t.home:3309/tsp_ms?characterEncoding=utf8&useSSL=true&autoReconnect=true
+    username: tsp_ms
+    password: tsp_ms
+    driverClassName: com.mysql.jdbc.Driver
+
+## feign client microservice name mapper
+feign:
+  microservice:
+    zuul: zuul-server
