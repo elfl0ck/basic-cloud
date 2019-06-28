@@ -71,9 +71,10 @@ tsf_consul_ip: 121.42.143.130
 ```properties
 -Dtsf_application_id=a -Dtsf_group_id=b
 ```
-# 使用maven运行项目
+# 使用maven打包运行项目
 ```shell
 mvn clean package
+java -jar target/microservice.app 
 ```
 
 # Swagger-ui页面
