@@ -57,6 +57,16 @@ bootstrap.yml -> application.yml -> application-(dev|sit|uat|prod).yml
 ```
 其中 IP 和 port 取值为轻量级服务注册中心的地址。服务打包发布到TSP平台，无需设置此参数。
 
+## 本地开发设置consul地址
+本地开发时，我们需要连接到一个有效的consul-server，否则服务在本地无法启动。
+腾讯官方推荐在本地启动一个consul-server，TSF-SDK在启动的时候会默认连接127.0.0.1:8500，也就是本地启动的consul-server。
+我建议，直接在服务端上装一个consul-server，本地开发时默认连接我们安装的consul-server，本地开发环境指定consul-server的IP地址，
+这样本地开发时就无需在本地启动consul-server。本地开发连接服务端consul-server配置方式是在bootstrap.yml中设置如下变量：
+```properties
+tsf_consul_ip: 121.42.143.130
+```
+服务开发完成后，这个值不能发布到TSP平台，否则会导致微服务无法使用TSF集群内默认的服务注册与发现中心。
+
 使用了分布式配置功能的模块，需要设置
 ```properties
 -Dtsf_application_id=a -Dtsf_group_id=b
