@@ -48,7 +48,7 @@ application.yml和bootstrap.yml 一定会生效的配置。
 ```properties
 bootstrap.yml -> application.yml -> application-(dev|sit|uat|prod).yml
 ```
-如果后边的配置文件出现了前边配置文件中的相同的变量，则使用后边出现的变量值替换前边变量的值。
+如果后边的配置文件出现了前边配置文件中相同的变量名，则使用后边出现的变量值替换前边变量的值。
 
 # 设置Consul服务地址
 在 IDE 中启动，通过 VM options 配置启动参数
