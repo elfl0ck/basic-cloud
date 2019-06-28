@@ -1,31 +1,5 @@
 tsf_consul_ip: 121.42.143.130
 
-server:
-  port: 8080
-
 spring:
   profiles:
     active: dev
-
-tsf:
-  swagger:
-    enabled: true
-
-mybatis:
-  configuration:
-    mapUnderscoreToCamelCase: true
-
-pagehelper:
-  helper-dialect: mysql
-  reasonable: true
-  support-methods-arguments: true
-  params: count=countSql
-  auto-runtime-dialect: true
-
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 9000

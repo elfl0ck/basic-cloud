@@ -1,11 +1,11 @@
 logging:
-  file: /tsf-demo-logs/${spring.application.name}/root.log
+  file: /tsf-ivi3-logs/${spring.application.name}/root.log
   level:
     root: INFO
 
 spring:
   application:
-    name: basic-project-dev
+    name: common-project-dev
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://mdb.sit.ptcloud.t.home:3309/tsp_ms?characterEncoding=utf8&useSSL=true&autoReconnect=true

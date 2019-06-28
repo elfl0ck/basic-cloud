@@ -1,6 +1,5 @@
-package com.pateo.qingcloud.app.proxy;
+package com.cars.network.cloud.common;
 
-import com.pateo.qingcloud.app.utils.RestResponseBody;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ZuulService {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    RestResponseBody login(@RequestParam(value = "username") String username,
-                           @RequestParam(value = "password") String password);
+    String login(@RequestParam(value = "username") String username,
+                 @RequestParam(value = "password") String password);
 
 }

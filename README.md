@@ -1,4 +1,4 @@
-### TSF云平台基础开发包
+# TSF云平台基础开发包
 基于腾讯TSF云平台SDK整理而成，主要包含如下组件：
 - TSF云平台SDK
 - 集成Swagger-ui，辅助本地开发调试
@@ -7,7 +7,7 @@
 - 集成mybatis数据持久层框架
 - PageHelper查询分页组件
 
-### 使用方法
+# 使用方法
 - 在git上下载本项目全部代码
 ```
 git clone https://xxx/xxx/xxx.git
@@ -42,10 +42,10 @@ bootstrap.yml         全局配置文件
 mvn clean package
 ```
 
-### 设置Consul服务地址
+# 设置Consul服务地址
 在 IDE 中启动，通过 VM options 配置启动参数
 ```properties
--Dtsf_consul_ip=127.0.0.1 -Dtsf_consul_port=8500 -Dtsf_application_id=a -Dtsf_group_id=b
+-Dtsf_consul_ip=127.0.0.1 -Dtsf_consul_port=8500
 ```
 其中 IP 和 port 取值为轻量级服务注册中心的地址。
 使用了分布式配置功能的模块，需要设置

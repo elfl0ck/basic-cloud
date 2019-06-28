@@ -1,4 +1,4 @@
-package com.pateo.qingcloud;
+package com.cars.network.cloud;
 
 import com.tencent.tsf.monitor.annotation.EnableTsfMonitor;
 import com.tencent.tsf.sleuth.annotation.EnableTsfSleuth;
@@ -22,7 +22,6 @@ import org.springframework.tsf.ratelimit.annotation.EnableTsfRateLimit;
 @EnableTsfMonitor
 public class BootstrapApplication {
     public static void main(String[] args) {
-
         SpringApplication.run(BootstrapApplication.class, args);
     }
 }

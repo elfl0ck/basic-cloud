@@ -1,13 +1,12 @@
-package com.pateo.qingcloud.config;
+package com.cars.network.cloud.common;
 
-import com.pateo.qingcloud.app.proxy.ZuulService;
-import com.pateo.qingcloud.app.utils.RestResponseBody;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
@@ -40,16 +39,22 @@ public class ZuulAuthenticateConfig implements RequestInterceptor, CommandLineRu
     public void run(String... args) throws Exception {
         log.info("command line callback...");
         token = getToken();
-        log.info("获取Token信息：token 是：{}", token);
+        log.info("token is: {}", token);
     }
 
     /**
      * 模拟用户登录，获取token信息
      */
     private String getToken() throws Exception {
-        RestResponseBody result = loginService.login("309810957@qq.com", "123456");
-        if (result.getCode() == 200) {
-            return result.getData().toString();
+        String result = loginService.login("309810957@qq.com", "123456");
+        if (result != null && !result.isEmpty()) {
+            JSONObject json = new JSONObject(result);
+            if (json.has("data")) {
+                String tokenStr = json.getString("data");
+                if (tokenStr != null && !tokenStr.isEmpty()) {
+                    return tokenStr;
+                }
+            }
         }
         throw new Exception("获取token信息失败");
     }
