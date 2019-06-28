@@ -55,3 +55,10 @@ mvn clean package
 ```properties
 -Dtsf_application_id=a -Dtsf_group_id=b
 ```
+
+# API查看页面
+系统启动后，打开浏览器输入如下地址：
+```properties
+http://IP:PORT/swagger
+```
+> 如采用默认配置启动，访问地址是：http://localhost:8080/swagger
