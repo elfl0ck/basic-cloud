@@ -29,7 +29,7 @@ spring:
   application:
     name: basic-project
 ```
-参数配置文件有5个，分别是：
+参数配置文件有6个，分别是：
 ```properties
 application-dev.yml   本地开发配置文件
 application-sit.yml   集成测试环境配置文件
@@ -38,11 +38,17 @@ application-prod.yml  生产环境配置文件
 application.yml       全局配置文件
 bootstrap.yml         全局配置文件
 ```
+
+application.yml和bootstrap.yml 一定会生效的配置。
+其余4个配置文件，根据spring.profiles.active的值来决定启动哪个配置。如spring.profiles.active=dev则application-dev.yml配置文件生效，其余的-sit,-uat,-prod的几个配置不生效，以此类推。
+
+
+## 配置文件生效顺序：
 **注意：bootstrap.yml和application.yml有一些差异，系统启动时，先读取的是bootstrap.yml文件**
-- 使用maven运行项目
-```shell
-mvn clean package
+```properties
+bootstrap.yml -> application.yml -> application-(dev|sit|uat|prod).yml
 ```
+如果后边的配置文件出现了前边配置文件中的相同的变量，则使用后边出现的变量值替换前边变量的值。
 
 # 设置Consul服务地址
 在 IDE 中启动，通过 VM options 配置启动参数
@@ -55,8 +61,12 @@ mvn clean package
 ```properties
 -Dtsf_application_id=a -Dtsf_group_id=b
 ```
+# 使用maven运行项目
+```shell
+mvn clean package
+```
 
-# API查看页面
+# Swagger-ui页面
 系统启动后，打开浏览器输入如下地址：
 ```properties
 http://IP:PORT/swagger
